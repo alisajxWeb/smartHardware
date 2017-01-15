@@ -1,0 +1,46 @@
+<%
+    include('common/header.html', {
+        links: [
+            _this.rootBase + '/css/btb-main.less',
+            _this.rootBase + '/dep/daterangepicker/daterangepicker.css'
+        ]
+    });
+%>
+
+<div class="base-container" data-module-path="btb/main">
+    <div class="main-page">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation"><a href="#scene" class="tab-event" aria-controls="scene" role="tab" data-toggle="tab" data-index="1">场景还原</a></li>
+            <li role="presentation"><a href="#profile" class="tab-event" aria-controls="profile" role="tab" data-toggle="tab" data-index="2">规则查询</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane" id="scene">
+                <%
+                    include('btb/scene.html');
+                %>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="profile">
+                <%
+                    include('btb/profile.html');
+                %>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<%
+    include('common/nav.html');
+%>
+
+<%
+    include('common/footer.html', { 
+        scripts: [
+            _this.rootBase + '/dep/daterangepicker/moment.js',
+            _this.rootBase + '/dep/daterangepicker/daterangepicker.js'
+        ]
+    });
+%>

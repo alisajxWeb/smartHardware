@@ -1,0 +1,44 @@
+<%
+    include('common/header.html', {
+        links: [
+            _this.rootBase + '/css/taxi-main.less',
+            _this.rootBase + '/dep/daterangepicker/daterangepicker.css'
+        ]
+    });
+%>
+
+    <div class="base-container" data-module-path="taxi/main">
+        <div class="main-page">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation"><a href="#log" class="tab-event" aria-controls="log" role="tab" data-toggle="tab" data-index="1">策略分单</a></li>
+                <li role="presentation"><a href="#scene" class="tab-event" aria-controls="scene" role="tab" data-toggle="tab" data-index="2">场景还原</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane" id="log">
+                    <%
+                    include('taxi/strategy.html');
+                %>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="scene">
+                    <%
+                    include('taxi/taxiScene.html');
+                %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%
+    include('common/nav.html');
+%>
+
+        <%
+    include('common/footer.html', { 
+        scripts: [
+            _this.rootBase + '/dep/daterangepicker/moment.js',
+            _this.rootBase + '/dep/daterangepicker/daterangepicker.js'
+        ]
+    });
+%>

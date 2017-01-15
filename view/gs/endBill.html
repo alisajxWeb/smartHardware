@@ -1,0 +1,65 @@
+<div class="table-responsive" data-module-path="gs/endBill">
+    <div class="content-module" id="endBill">
+        <form class="form-inline module-block">
+            <div class="form-group">
+                <select class="form-control" id="endBillType">
+                    <option value="billOrder">订单号</option>
+                    <option value="billPhone">手机号</option>
+                </select>
+                <input type="text" class="form-control" id="endBillQueryInfo">
+            </div>
+            <div class="form-group">
+                <label>时间范围</label>
+                <div class="input-group">
+                    <input type="text" class="form-control form_time" name="endBillTimeRange" id="endBillTimeRange" style="width: 280px;">
+                    <label class="input-group-addon" for="endBillTimeRange"><i class="glyphicon glyphicon-calendar"></i></label>
+                </div>
+                <input type="hidden" name="endBillBeginTime" id="endBillBeginTime"/>
+                <input type="hidden" name="endBillEndTime" id="endBillEndTime"/>
+            </div>
+            <input id="endBillQuery" type="button" class="btn btn-primary query-btn" value="查询">
+        </form>
+        <div class="feedback-container module-block">
+            <div class="conclusion">
+                <div class="title">概要</div>
+                <div id="endBillConclusion"></div>
+            </div>
+        </div>
+        <div class="data-list-wrap module-block">
+             <table class="table table-fixed-header">
+                <thead>
+                    <tr>
+                        <th style="width:15%">
+                            模块
+                        </th>
+                        <th class="sort" style="width:20%" data-sort-for="endBillTable">
+                            日志时间
+                            <span class="glyphicon glyphicon-triangle-bottom active" ></span>
+                            <span class="glyphicon glyphicon-triangle-top"></span>
+                        </th>
+                        <th style="width:20%"> 
+                            摘要
+                        </th>
+                        <th>
+                            原始日志
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="table-wrap">
+                <table id="endBillTable" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width:15%"></th>
+                            <th style="width:20%"></th>
+                            <th style="width:20%"></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

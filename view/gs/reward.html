@@ -1,0 +1,62 @@
+<div class="table-responsive" data-module-path="gs/reward">
+    <div class="content-module" id="reward">
+        <form class="form-inline module-block">
+            <div class="form-group">
+                <select class="form-control js-reward-query-type" name="rewardQueryType" id="rewardQueryType"></select>
+                <input type="text" class="form-control" placeholder="请选择地区" name="rewardArea" id="rewardArea" style="display:none"/>
+                <select class="form-control js-reward-id-type" name="rewardQueryIdType" id="rewardQueryIdType"></select>
+                <input type="text" class="form-control" name="keyId" id="keyId">
+                <input type="text" placeholder="请输入活动id" name="activityId" class="form-control" id="activityId" style="display:none">
+            </div>
+            <div class="form-group">
+                <label>时间范围</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="rewardTimeRange" id="rewardTimeRange" style="width: 275px;">
+                    <label class="input-group-addon" for="rewardTimeRange"><i class="glyphicon glyphicon-calendar"></i></label>
+                </div>
+                <input type="hidden" name="rewardBeginTime" id="rewardBeginTime" >
+                <input type="hidden" name="rewardEndTime" id="rewardEndTime" >
+            </div>
+            <input id="rewardQuery" type="button" class="btn btn-primary query-btn" value="查询">
+        </form>
+        <div class="feedback-container module-block">
+            <div class="conclusion">
+                <div class="title">概要</div>
+                <div id="rewardConclusion"></div>
+            </div>
+        </div>
+        
+        <div class="data-list-wrap module-block">
+            <table class="table table-fixed-header">
+                <thead>
+                    <tr>
+                        <th class="sort" style="width:20%" data-sort-for="rewardTable">
+                            日志时间
+                            <span class="glyphicon glyphicon-triangle-bottom active"></span>
+                            <span class="glyphicon glyphicon-triangle-top"></span>
+                        </th>
+                        <th style="width: 33%">
+                            摘要
+                        </th>
+                        <th>
+                            原始日志
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="table-wrap">
+                <table id="rewardTable" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width:20%"></th>
+                            <th style="width:33%"></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

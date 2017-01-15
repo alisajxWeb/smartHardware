@@ -1,0 +1,53 @@
+<div class="table-responsive" style="display:none;" data-module-path="reports/userAccess">
+    <div class="content-module" id="userAccess">
+        <form class="form-inline module-block">
+            <div class="form-group">
+                <label for="accessTimeRange">时间范围</label>
+                <div class="input-group">
+                    <input type="text" class="form-control form_time" name="accessTimeRange" id="accessTimeRange" style="width: 280px;">
+                    <label class="input-group-addon" for="accessTimeRange"><i class="glyphicon glyphicon-calendar"></i></label>
+                </div>
+                <input type="hidden" name="accessBeginTime" id="accessBeginTime">
+                <input type="hidden" name="accessEndTime" id="accessEndTime">
+            </div>
+            <input id="accessQuery" type="button" class="btn btn-primary" value="查询">
+        </form>
+        <div class="module-block">
+            <div id="accessChart" style="height: 500px"></div>
+            <div class="data-list-wrap module-block">
+                <table class="table table-fixed-header">
+                    <thead>
+                        <tr>
+                            <th class="sort" style="width:40%" data-sort-for="userAccessTable">
+                                访问时间
+                                <span class="glyphicon glyphicon-triangle-bottom active"></span>
+                                <span class="glyphicon glyphicon-triangle-top"></span>
+                            </th>
+                            <th>
+                                用户名
+                            </th>
+                            <th>
+                                url
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div class="table-wrap">
+                    <table id="userAccessTable" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th style="width:40%"></th>
+                                <th style="width:30%"></th>
+                                <th style="width:30%"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

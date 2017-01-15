@@ -1,0 +1,39 @@
+@prefix: ~'exports-plugin';
+
+
+.@{prefix} {
+    &-restore-container{
+        .exports-plugin-restore-map-container {
+            position: relative;
+            border: 1px solid #ddd;
+            .exports-plugin-restore-map {
+                height: 500px;
+                margin-right: 200px;
+            }
+            .exports-plugin-restore-plugins {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 200px;
+            }
+        }
+
+        .@{prefix}-restore-order-header {
+            height: 30px;
+            line-height: 30px;
+            padding-left: 10px;
+            background: #ddd;    
+        }
+
+        .@{prefix}-restore-order-wrap,
+        .@{prefix}-restore-list-wrap {
+            margin-top: 30px;
+        }
+
+        .@{prefix}-restore-list,
+        .@{prefix}-restore-order {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+    }
+}

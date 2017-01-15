@@ -1,0 +1,23 @@
+<%
+    include('common/header.html', {
+        links: [
+            _this.rootBase + '/css/json-view.less'
+        ]
+    });
+%>
+
+    <div class="base-container" data-module-path="jsonView/main">
+        <div class="main-page">
+            <div>
+                <pre id="view"></pre>
+            </div>
+        </div>
+    </div>
+
+<%
+    include('common/nav.html');
+%>
+
+<%
+    include('common/footer.html');
+%>

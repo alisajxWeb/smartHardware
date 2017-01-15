@@ -1,0 +1,186 @@
+.main-maphelper-wrap {
+    position: fixed;
+    z-index: 10000;
+    bottom: 0;
+    right: 20px;
+    width: 580px;
+    height: 400px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    background: #fff;
+    transform: translate3d(0,0,0);
+
+    .glyphicon-resize-full {
+        display: inline-block;
+    }
+
+    .glyphicon-resize-small {
+        display: none;
+    }
+
+    .glyphicon-minus {
+        display: inline-block;
+    }
+
+    .glyphicon-plus {
+        display: none;
+    }
+
+    &.small-screen {
+        height: 30px;
+        width: 300px;
+
+        .glyphicon-minus {
+            display: none;
+        }
+        
+        .glyphicon-plus {
+            display: inline-block;
+        }
+    }
+
+    .points-container {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+        .point-item {
+            position: relative;
+            padding: 5px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            &:hover {
+                .glyphicon {
+                    display: inline-block;
+                }
+            }
+        }
+        .glyphicon {
+            display: none;
+            position: absolute;
+            right: 5px;
+            top: 7px;
+            cursor: pointer;
+            color: #FA8919;
+        }
+    }
+
+    &.full-screen {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border: none;
+        width: 100%;
+        height: auto;
+        .glyphicon-resize-full {
+            display: none;
+        }
+
+        .glyphicon-resize-small {
+            display: inline-block;
+        }
+    }
+
+    &.fold {
+        .map-controls{
+            transform: translateX(100%);
+            .toggle-fold {
+                transform: translateX(-100%);
+                .glyphicon-menu-right {
+                    display: none;
+                }
+                .glyphicon-menu-left {
+                    display: inline-block;
+                }
+            }
+        }
+        .map-container {
+            right: 0;
+        }
+    }
+
+    .map-container {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 33%;
+        z-index: 100;
+        transition: all .5s;
+    }
+
+    .maphelper-body {
+        position: absolute;
+        top: 30px;
+        bottom: 0;
+        width: 100%;
+        border-top: 1px solid #eee;
+    }
+
+    .maphelper-header{
+        overflow: hidden;
+        .maphelper-title {
+            float: left;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 10px;
+            font-weight: bold;
+            color: #FA8919;
+        }
+        .tools {
+            list-style: none;
+            margin: 0;
+            padding: 5px;
+            text-align: center;
+            float: right;
+
+            .glyphicon {
+                line-height: inherit;
+                font-size: 12px;
+            }
+
+            .tool-btn {
+                display: inline-block;
+                margin-left: 5px;
+                padding: 2px 3px;
+                line-height: 1;
+                border-radius: 3px;
+                text-align: center;
+                background: #FA8919;
+                color: #fff;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .map-controls {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 33%;
+        z-index: 1000;
+        border-left: 1px solid #ddd;
+        transition: all .5s;
+        transform: translateX(0);
+
+        .toggle-fold {
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            cursor: pointer;
+            z-index: 100;
+            transition: all .1s;
+            .glyphicon {
+                color: #FA8919;
+            }
+            .glyphicon-menu-right {
+                display: inline-block;
+            }
+            .glyphicon-menu-left {
+                display: none;
+            }
+        }
+    }
+}

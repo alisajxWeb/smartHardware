@@ -1,0 +1,51 @@
+<div class="content-module taxi-scene-page" data-module-path="taxi/taxiScene">
+    <div class="module-block">
+        <div id="taxiScene">
+            <form class="form-inline">
+                <div class="form-group">
+                    <select class="form-control js-taxiScene-query-type js-form-field" name="taxiSceneQueryType" id="taxiSceneQueryType">
+                        <option value="orderId" selected="selected">订单ID</option>
+                    </select>
+                    <div class="form-group">
+                        <input type="text" class="form-control js-form-field" placeholder="请输入" name="taxiSceneQueryInfo" style="width:230px;" id="taxiSceneQueryInfo"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>时间范围</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="timeRange" id="taxiSceneTimeRange" style="width: 315px;">
+                        <label class="input-group-addon" for="taxiSceneTimeRange"><i class="glyphicon glyphicon-calendar"></i></label>
+                    </div>
+                    <input type="hidden" class = "js-form-field" name="beginTime" id="taxieSceneBeginTime">
+                    <input type="hidden" class = "js-form-field" name="endTime" id="taxiSceneEndTime">
+                </div>
+                <input id="taxiSceneQuery" type="button" class="btn btn-primary query-btn" value="查询">
+            </form>
+        </div>
+
+        <div class="feedback-container module-block">
+            <div class="conclusion">
+                <div class="title">概要</div>
+                <div id="taxiSceneConclusion"></div>
+            </div>
+        </div>
+
+        <div class="data-list-wrap module-block" style="padding:0 12px;">
+            <table class="table table-hover" id="taxiSceneTable" style="table-layout: fixed; font-size:12px;">
+                <thead style="font-size:14px;">
+                    <tr>
+                        <th style="width:18px;">
+                        <th style="width: 160px">时间</th>
+                        <th>Url</th>
+                        <th>操作</th>
+                        <th style="width: 180px;">摘要</th>
+                        <th style="width: 215px">订单号</th>
+                        <th style="width: 50px">详情</th>
+                    </tr>
+                </thead>
+                <tbody class="list"></tbody>
+            </table>
+        </div>
+    </div>
+</div>

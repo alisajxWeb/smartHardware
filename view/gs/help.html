@@ -1,0 +1,42 @@
+<div class="table-responsive" style="display:none;">
+    <div class="info" id="gs-help">
+        <div class="panel-body">
+            api服务的地址为http://api.bamai.pro.intra.xiaojukeji.com
+        </div>
+        <div class="panel-body">
+            通用返回格式:<br> query:输入的查询条件
+            <br> project:所属的产品线,这里为zhuanche
+            <br> errorCode:暂时无用途
+            <br> keyInfomation:暂时无用途
+            <br> agentIp:暂时无用途
+            <br> messages:json数组,封装的json对象根据不同业务而结构不同
+        </div>
+        <div class="panel-body">
+            司机听单服务的地址为gs/driverListen/phone/{phone},gs/driverListen/driverId/{driverId},gs/driverListen/orderId/{orderId}/area/{area},可选参数为beginTime和endTime，格式为yyyy-MM-dd
+            HH:mm:ss,参数area为该地区的区号,orderId输入为短订单号,返回sdp,stg和api的相关日志
+            <br> eg. <span style="background:#337ab7;color:white;">curl "http://api.bamai.pro.intra.xiaojukeji.com/gs/driverListen/driverId/564724156468031?beginTime=2016-05-18%2000:00:00&endTime=2016-05-18%2023:59:59"</span>
+        </div>
+        <div class="panel-body">
+            messages中json对象返回格式:<br> module:日志所属模块
+            <br> message:原始日志
+            <br> logTime:日志产生时间
+            <br> digest:原始日志翻译结果
+            <br> moduleName:日志所属模块名称
+        </div>
+        <div class="panel-body">
+            计费服务的地址为gs/billPreOrder/passengerPhone/{phone},gs/beginBill/orderId/{orderId},gs/endBill/orderId/{orderId},gs/payBill/orderId/{orderId},可选参数为beginTime和endTime，格式为yyyy-MM-dd
+            HH:mm:ss,orderId输入为短订单号,返回账单,收银台和api的相关日志
+            <br> eg. <span style="background:#337ab7;color:white;">curl "http://api.bamai.pro.intra.xiaojukeji.com/gs/payBill/orderId/2163369307?beginTime=2016-05-18%2000:00:00&endTime=2016-05-18%2023:59:59"</span>
+        </div>
+        <div class="panel-body">
+            messages中json对象返回格式:<br> name:模块以及调用方法名称
+            <br> logTime:日志产生时间
+            <br> message:原始日志
+            <br> digest:原始日志翻译结果
+            <br> request:传入内容
+            <br> response:返回内容
+            <br> digest:原始日志翻译结果
+            <br> url:方法内调用其他服务的地址
+        </div>
+    </div>
+</div>

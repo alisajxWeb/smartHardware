@@ -1,0 +1,40 @@
+<div class="content-module taxi-strategy-page" data-module-path="taxi/strategy">
+    <div class="module-block">
+        <form class="form-inline">
+            <div class="form-group">
+                <input type="text" class="form-control js-form-field" name="driverId" placeholder="请输入司机ID" />
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control js-form-field" name="orderId" placeholder="请输入订单号" />
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="timeRange" id="strategyTimeRange" style="width: 320px;" placeholder="请选择时间" data-validate-name="timeRange">
+                    <label class="input-group-addon" for="strategyTimeRange"><i class="glyphicon glyphicon-calendar"></i></label>
+                </div>
+                <input type="hidden" class="js-form-field" name="beginTime" />
+                <input type="hidden" class="js-form-field" name="endTime" />
+            </div>
+            <input type="button" class="btn btn-primary query-btn" value="查询" />
+        </form>
+    </div>
+    <div class="module-block">
+        <div class="feedback-container">
+            <div class="conclusion">
+                <div class="title">概要</div>
+                <div class="conclusion-text"></div>
+            </div>
+        </div>
+    </div>
+    <div class="module-block">
+        <table class="table table-hover">
+            <thead>
+                <th style="width:150px">日志时间</th>
+                <th style="width:150px">城市</th>
+                <th style="width:200px">uuid</th>
+                <th>摘要</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>

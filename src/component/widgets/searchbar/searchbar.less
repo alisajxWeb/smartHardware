@@ -1,0 +1,61 @@
+.searchbar-container {
+    position: fixed;
+    top: 75px;
+    right: 18px;
+    z-index: 100;
+    width: auto;
+    &.active,
+    &:hover,
+    &:active {
+        .searchbar-total {
+            display: block;
+        }
+        .searchbar-form {
+            width: 300px;
+            .btn {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+            .form-control {
+                border-color: #ccc;
+            }
+        }
+    }
+    .searchbar-form {
+        position: relative;
+        overflow: hidden;
+        width: 35px;
+        height: 30px;
+        transition: width .1s linear;
+
+        .searchbar-animate-container {
+            position: absolute;
+            right: 1px;
+        }
+
+        .form-control {
+            border-color: transparent;
+        }
+
+        .btn {
+            border-radius: 3px;
+        }
+
+        .glyphicon-refresh {
+            position: absolute;
+            top: 8px;
+            right: 40px;
+            z-index: 10;
+        }
+    }
+
+    .searchbar-total {
+        display: none;
+        position: absolute;
+        right: 310px;
+        top: 13px;
+        width: 159px;
+        text-align: right;
+        font-size: 12px;
+    }
+}

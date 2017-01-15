@@ -1,0 +1,50 @@
+@prefix: ~'exports-plugin';
+
+.@{prefix} {
+    &-restore-list-wrap {
+        .@{prefix}-restore-list-table {
+            border-spacing: 0;
+            border-collapse: collapse;
+            vertical-align: middle;
+            table-layout: fixed;
+            width: 100%;
+
+            thead {
+                background: #dedede;
+            }
+
+            tr {
+                border-bottom: 1px solid #eee;
+            }
+
+            th {
+                height: 25px;
+                padding-left: 10px;
+                font-size: 13px;
+                padding-left: 10px;
+            }
+
+            th:nth-child(4) {
+                width: 150px;
+            }
+
+            th:first-child {
+                width: 200px;
+            }
+
+            th:last-child {
+                width: 50px;
+            }
+
+            td {
+                word-break: break-word;
+                padding-left: 10px;
+                line-height: 30px;
+                font-size: 12px;
+                a {
+                    color: inherit;
+                }
+            }
+        }
+    }
+}

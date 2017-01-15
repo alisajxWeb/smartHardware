@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8"/>
+        <title>把脉NPS调研</title>
+        <script src="<%= _this.rootBase %>/dep/jquery-1.11.3.min.js"></script>
+        <script src="<%= _this.rootBase %>/dep/jquery-cookie.js"></script>
+        <style>
+            body {
+                font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+                font-size: 14px;
+                line-height: 1.42857143;
+                color: #333;
+                padding: 0;
+                margin: 0;
+                background: #f0f0f0;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            }
+
+            .questionnaire {
+                width: 90%;
+                margin: 0 auto;
+            }
+
+            .questionnaire .questionnaire-head {
+                background: #ffa033;
+                color: #fff;
+                overflow: hidden;
+            }
+
+            .questionnaire-head .questionnaire-logo {
+                float: left;
+                padding: 5px;
+            }
+
+            .questionnaire-head .questionnaire-logo img {
+                display: block;
+            }
+
+            .questionnaire-head .questionnaire-title .questionnaire-title-main {
+                text-align: center;
+                font-size: 16px;
+                font-weight: bold;
+                margin-top: 3px;
+            }
+
+            .questionnaire-head .questionnaire-title .questionnaire-title-sub {
+                margin-top: 5px;
+                text-align: center;
+                font-size: 12px;
+                color: #eee;
+            }
+
+            .question {
+                background: #fff;
+                margin-bottom: 10px;
+            }
+
+            .hide {
+                display: none;
+            }
+
+            .question .question-title {
+                padding: 0 15px;
+                height: 50px;
+                line-height: 50px;
+                border-bottom: 1px solid #e5e5e5;
+                box-sizing: border-box;
+            }
+
+            .question .question-selection {
+                padding: 15px;
+                color: #878787;
+            }
+
+            .question .question-selection .question-selection-item {
+                display: inline-block;
+                margin-right: 20px;
+                cursor: pointer;
+                -webkit-user-select: none;
+                cursor: pointer;
+            }
+
+            input[type=text] {
+                padding: 0 5px;
+                height: 14px;
+                line-height: 14px;
+                min-width: 150px;
+            }
+
+            input[type=radio] {
+                -webkit-appearance: none;
+                appearance: none;
+                outline: none !important;
+                min-width: 16px;
+                width: 16px;
+                height: 16px;
+                border-radius: 8px;
+                position: relative;
+                margin: 0;
+                border: 1px solid #ccc;
+                box-sizing: border-box;
+                top: 3px;
+                margin-right: 2px;
+            }
+
+            input[type=radio]:checked {
+                background: url(http://tiyan.xiaojukeji.com/crm/resources/images/question/radio.png) center center no-repeat #fff;
+                background-size: 16px auto;
+                border-color: #ff8b03;
+            }
+
+            input[type=checkbox] {
+                -webkit-appearance: none;
+                appearance: none;
+                outline: none !important;
+                min-width: 16px;
+                width: 16px;
+                height: 16px;
+                border-radius: 2px;
+                position: relative;
+                margin: 0;
+                border: 1px solid #ccc;
+                box-sizing: border-box;
+                top: 3px;
+                margin-right: 2px;
+            }
+
+            input[type=checkbox]:checked {
+                background: url(http://tiyan.xiaojukeji.com/crm/resources/images/question/checkedbox.png) center center no-repeat #fff;
+                background-size: 16px auto;
+                border-color: #ff8b03;
+            }
+
+            input[type=checkbox]:hover {
+                border: 1px solid #dcdcdc;
+                box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+            }
+
+            input[type=checkbox]:hover {
+                border: 1px solid #dcdcdc;
+                box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+            }
+
+            textarea {
+                width: 100%;
+                border: solid 1px #f5f5f5;
+                resize: none;
+            }
+
+            textarea:focus {
+                outline-color: #ffa033;
+            }
+            
+            .border-bottom {
+                border: none;
+                border-bottom: solid 1px #f5f5f5;
+            }
+
+            .border-bottom:focus {
+                outline: none;
+                border-color: #ffa033;
+            }
+
+            .mt-10 {
+                margin-top: 10px;
+            }
+
+            .actions {
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+            }
+
+            .actions .action {
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                background: #ffa033;
+                padding: 0;
+                width: 50px;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+            }
+
+            .actions .action:focus {
+                outline: none;
+            }
+
+            .actions .action:hover {
+                background: #fa8919;
+            }
+
+            .error-tip {
+                margin-left: 5px;
+                font-size: 12px;
+                color: #f00;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="questionnaire">
+            <div class="questionnaire-head">
+                <div class="questionnaire-logo">
+                    <img src="http://tiyan.xiaojukeji.com/crm/resources/images/question/start.png" width="52px"/>
+                </div>
+                <div class="questionnaire-title">
+                    <div class="questionnaire-title-main">把脉平台NPS问卷调查</div>
+                    <div class="questionnaire-title-sub">为了解大家对把脉平台的满意度状况，特进行此次专项NPS调研。非常感谢您能参与此次调查，提供您的看法与意见，希望能够得到您的大力支持与合作</div>
+                </div>
+            </div>
+            <div class="questionnaire-body">
+                <div class="question has-text-input" data-input-ref="5">
+                    <div class="question-title">Q1、您所在的部门</div>
+                    <div class="question-selection">
+                        <label class="question-selection-item">
+                            <input type="radio" name="q1" value="1"/>客服部 
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q1" value="2"/>开发
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q1" value="3"/>区域（大区）
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q1" value="4"/>测试
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q1" value="5"/>其他
+                            <input class="border-bottom" type="text" placeholder="请输入"/>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question js-mul-selection" data-max="3">
+                    <div class="question-title">Q2、您常用的把脉模块是？（请选择最常用的3个模块）</div>
+                    <div class="question-selection">
+                        <label class="question-selection-item">
+                            <input type="checkbox" name="q2" value="1"/>专快 
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="checkbox" name="q2" value="2"/>顺风车
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="checkbox" name="q2" value="3"/>出租车
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="checkbox" name="q2" value="4"/>企业级
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="checkbox" name="q2" value="5"/>支付 
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="checkbox" name="q2" value="6"/>日志抓取
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-title">Q3、根据您最近一段时间用把脉的体验，您有多大可能性把它推荐给其他同事？</div>
+                    <div class="question-selection">
+                        <label class="question-selection-item">
+                            <input type="radio" name="q3" value="10"/>10（肯定会推荐） 
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q3" value="9"/>9
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q3" value="8"/>8
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q3" value="7"/>7
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q3" value="6"/>6 
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q3" value="5"/>5（不确定）
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q3" value="4"/>4
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q3" value="3"/>3
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q3" value="2"/>2 
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q3" value="1"/>1（绝对不推荐）
+                        </label>
+                    </div>
+                </div>
+
+
+                <div class="question js-mul-selection" id="q4" data-max="3">
+                    <div class="question-title">Q4、我们在哪些方面做出改善会让您愿意推荐使用把脉？（请选择最重要的3个方面）</div>
+                    <div class="question-selection">
+                        <label class="question-selection-item">
+                            <input type="checkbox" name="q4" value="1"/>查询结果更全面、更精准
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="checkbox" name="q4" value="2"/>操作性更强、更便捷
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="checkbox" name="q4" value="3"/>可以支持更多问题类型的定位及查询
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="checkbox" name="q4" value="4"/>新增更多辅助性功能
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="checkbox" name="q4" value="5"/>更加美观的页面 
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="checkbox" name="q4" value="6"/>其他
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question has-text-area" data-area-ref="4">
+                    <div class="question-title">Q5、把脉平台现有的功能是否能满足您的日常工作需要？</div>
+                    <div class="question-selection">
+                        <label class="question-selection-item">
+                            <input type="radio" name="q5" value="10" />10（非常满足） 
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q5" value="9" />9
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q5" value="8" />8
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q5" value="7" />7（基本满足）
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q5" value="6" />6 
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q5" value="5" />5（不确定）
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q5" value="4" />4
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q5" value="3" />3
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q5" value="2" />2 
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q5" value="1" />1（不满足）
+                        </label>
+                        <div class="mt-10 hide js-area">
+                            <textarea rows="3" placeholder="请说明理由"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question has-text-area" data-area-ref="4">
+                    <div class="question-title">Q6、您对把脉查询到的结果或线索是否满意？（结果或线索的准确性、全面性）</div>
+                    <div class="question-selection">
+                        <label class="question-selection-item">
+                            <input type="radio" name="q6" value="10"/>10（非常满足） 
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q6" value="9"/>9
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q6" value="8"/>8
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q6" value="7"/>7 （基本满意）
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q6" value="6"/>6 
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q6" value="5"/>5（不确定）
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q6" value="4"/>4
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q6" value="3"/>3
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q6" value="2"/>2 
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q6" value="1"/>1（不满意）
+                        </label>
+                        <div class="mt-10 hide js-area">
+                            <textarea rows="3" placeholder="请说明理由"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question has-text-area" data-area-ref="4">
+                    <div class="question-title">Q7、您在使用把脉的过程中是否流畅？</div>
+                    <div class="question-selection">
+                        <label class="question-selection-item">
+                            <input type="radio" name="q7" value="10"/>10（非常流畅） 
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q7" value="9"/>9
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q7" value="8"/>8
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q7" value="7"/>7（一般流畅）
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q7" value="6"/>6 
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q7" value="5"/>5（不确定）
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q7" value="4"/>4
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q7" value="3"/>3
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q7" value="2"/>2 
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q7" value="1"/>1（不流畅）
+                        </label>
+                        <div class="mt-10 hide js-area">
+                            <textarea rows="3" placeholder="请说明理由"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="question">
+                    <div class="question-title">Q8、您对把脉平台的整体满意度是？</div>
+                    <div class="question-selection">
+                        <label class="question-selection-item">
+                            <input type="radio" name="q8" value="10"/>10（非常满意） 
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q8" value="9"/>9
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q8" value="8"/>8
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q8" value="7"/>7（基本满意）
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q8" value="6"/>6 
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q8" value="5"/>5（不确定）
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q8" value="4"/>4
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q8" value="3"/>3
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q8" value="2"/>2 
+                        </label>
+                        <label class="question-selection-item">
+                            <input type="radio" name="q8" value="1"/>1（不满意）
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question js-just-area">
+                    <div class="question-title">Q9、您觉得把脉还需要做什么改进？</div>
+                    <div class="question-selection">
+                        <textarea rows="3" placeholder="请输入"></textarea>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button class="action js-submit" type="button">确定</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            var key = 'nps_shown'; 
+            var questionKey = '1';
+            $('.js-mul-selection').on('click', 'input[type=checkbox]', function () {
+                var parent = $(this).parents('.js-mul-selection');
+                var max = +parent.data('max');
+                if (max <= parent.find('input[type="checkbox"]:checked').length) {
+                    parent.find('input[type="checkbox"]').each(function (index, item) {
+                        if (!item.checked) {
+                            $(item).prop('disabled', true);
+                        } 
+                    });
+                } else {
+                    parent.find('input[type="checkbox"]').prop('disabled', false);
+                }
+            });
+
+            $('.has-text-area').on('click', 'input', function () {
+                var parent = $(this).parents('.has-text-area');
+                var areaRef= parent.data('areaRef');
+                var value = parent.find('input[type="radio"]:checked').val();
+                parent.find('.js-area')[value <= areaRef ? 'show': 'hide']();
+            });
+
+            $.get('<%= _this.rootBase %>/proxyLocal/questionnaire/checkUserQuestionnaire/' + questionKey).done(function (response){
+                if (!response.success) {
+                    alert('您已经提交过，谢谢反馈');
+                    window.location.href = '/';
+                }
+            });
+
+            $('.js-submit').on('click', function () {
+                
+                var questions = $.makeArray($('.question'));
+                var result = true;
+                var answers = [];
+
+                var setError = function (item) {
+                    if ($(item).find('.error-tip').length === 0) {
+                        $(item).find('.question-title').append('<span class="error-tip">为了提供更好的服务，请帮组我们收集完整的答案</span>');
+                    }
+                    $('body').scrollTop($(item).offset().top);
+                };
+
+                for (var i = 0, len = questions.length; i < len; i++) {
+                    var item = questions[i];
+                    var selected = $(item).find('input:checked');
+                    var desc = '';
+                    if ($(item).hasClass('js-just-area')) {
+                        desc = $(item).find('textarea').val();
+                        answers.push({
+                            "questionId": i + 1,
+                            "answerId": '',
+                            "answerDesc": desc
+                        }); 
+                    } else if ($(item).hasClass('js-text-input')){
+                        desc = selected.parent().text();
+                        if ($(item).data('inputRef') == selected.val()) {
+                            desc = $(item).find('input[type="text"]').val();
+                        }
+                        answers.push({
+                            "questionId": i + 1,
+                            "answerId": selected.val(),
+                            "answerDesc": desc  
+                        }); 
+                    } else {
+                        if (selected.length === 0 ) {
+                            setError(item);
+                            return false;
+                        }
+                        if ($(item).hasClass('has-text-area') && selected.val() <= $(item).data('areaRef')) {
+                            desc = $(item).find('textarea').val();
+                        }
+                        selected.each(function (index, select) {
+                            answers.push({
+                                "questionId": i + 1,
+                                "answerId": $(select).val(),
+                                "answerDesc": desc ? desc : $(select).parent().text()  
+                            });
+                        });
+                    }
+                }
+
+                $.post('<%= _this.rootBase %>/proxyLocal/questionnaire/save/' + questionKey, {
+                    answers: JSON.stringify(answers)
+                }).done(function (response) {
+                    if (response.success) {
+                        Cookies.set('nps_shown', '1', { expires: 100, path: '/' } );
+                        alert('感谢您的支持，祝您生活愉快！');
+                        window.location.href= '/';
+                    } 
+                });
+            });
+        </script>
+    </body>
+</html>

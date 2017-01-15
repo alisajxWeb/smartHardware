@@ -1,0 +1,27 @@
+        <script src="<%= _this.rootBase %>/dep/jquery-1.11.3.min.js"></script>
+        <script src="<%= _this.rootBase %>/dep/bootstrap/bootstrap.min.js"></script>
+        <script src="<%= _this.rootBase %>/dep/simplite.js"></script>
+        <%
+            if (_this && _this.scripts) {
+                for (var i = 0, len = _this.scripts.length; i < len; i++) {
+        %>
+                    <script src="<%= _this.scripts[i] %>"></script>
+        <%
+                }
+            }
+        %>
+        <script src="<%= _this.rootBase %>/dep/require.js"></script>
+        <script>
+            window.rootBase = '<%= _this.rootBase %>';
+            requirejs.config({
+                baseUrl: '<%= _this.rootBase %>/src',
+                paths: {
+                    tpl: 'common/tpl',
+                    css: 'common/css',
+                    dep: '../dep'
+                }
+            });
+            require(['main']);
+        </script>
+    </body>
+</html>

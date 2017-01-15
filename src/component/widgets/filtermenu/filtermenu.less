@@ -1,0 +1,51 @@
+.filter-container {
+    position: relative;
+    display: inline-block;
+}
+
+.filter-container .filter-menu {
+    display: none;
+    position: absolute;
+    top: 120%;
+    min-width: 100px;
+    transform: translateX(-50%);
+    padding: 6px 10px;
+    border-radius: 3px;
+    border: 1px solid #eee;
+    background: #fff;
+    white-space: nowrap;
+    z-index: 100;
+}
+
+.filter-container .filter-menu label {
+    margin-left: 5px;
+}
+
+.filter-container .filter-menu:before {
+    position: absolute;
+    left: 50%;
+    top: -8px;
+    content: ' ';
+    border-top: none;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 8px solid #eee;
+}
+
+.filter-container .filter-menu:after {
+    position: absolute;
+    left: 50%;
+    top: -7px;
+    content: ' ';
+    border-top: none;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 8px solid #fff;
+}
+
+.filter-container .actions {
+    margin: 0 -10px;
+    padding-top: 6px;
+    border-top: 1px solid #eee;
+    text-align: center;
+}

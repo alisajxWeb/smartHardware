@@ -1,0 +1,42 @@
+<%
+    include('common/header.html', {
+        links: [
+            _this.rootBase + '/dep/animate.min.css'
+        ]
+    });
+%>
+
+    <div class="base-container">
+        <div class="panel panel-default">
+            <div class="panel-heading">把脉平台是公司业务问题还原，分析定位，数据采集的多功能工具平台，为整个公司内部员工提供工具服务。可以快速分析定位问题，极大降低人力投入成本，提供工作效率，及时发现问题，定位问题，间接提高了用户的体验，缩短问题产生的影响损失。</div>
+            <div class="panel-body">
+                <p>抓取数据致力于获取手机端上各种有用数据，以帮助问题定位。用户可以在平台上输入手机号、日志类型等多种条件来发布任务，当手机端查询到有任务时，会进行数据上传。之后在平台上可以获取到最终上传的数据。上传数据仅供办公网络下载。数据上传策略有按需上传、wifi全量上传等多种策略。用户在任务查询页面，可以根据多种条件筛选查询。</p>
+            </div>
+            <div class="panel-body">
+                <p>从用户角度，收集用户相关数据，并且在平台上将用户的一个历史“执行过程”的前后台相关数据，进行恢复、展现；恢复用户app操作，同时将后台重要数据归并再一起，让他人更直观的将一个过程呈现在面前；app操作回放、重要接口数据、用户属性数据、用户订单数据等。预计16年Q2完成。
+             </p>
+            </div>
+            <div class="panel-body">
+                <p>问题定位最终目标是实现全公司产品线的线上线下问题的快速定位，目前重点为解决专车top5的问题。用户可以通过输入司机乘客的相关信息快速拉取到线上对应的模块日志来排查问题，辅助定位线上线下的问题。</p>
+            </div>
+            <div class="panel-body">
+                <p>如遇到使用问题，请使用钉钉进群咨询：</p>
+                <img src="<%= _this.rootBase %>/img/dingding.jpg" width="200" height="200" />
+            </div>
+        </div>
+    </div>
+
+    <div class="nps-container" style="display:none">
+        <div class="nps-content-container">
+            <a href="<%= _this.rootBase %>/nps" target="_blank" class="go-btn">GO>></a>
+            <div class="text-desc">为了更好服务大家<br/>请花几分钟填一下调查问卷</div>
+        </div>
+    </div>
+
+<%
+    include('common/nav.html');
+%>
+
+<%
+    include('common/footer.html');
+%>

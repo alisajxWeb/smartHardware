@@ -1,0 +1,68 @@
+<%
+    include('common/header.html', {
+        links: [
+            _this.rootBase + '/css/sysmgr-main.less'
+        ]
+    });
+%>
+
+    <div class="base-container" data-module-path="sysmgr/main">
+        <div class="main-page">
+            <ul class="nav nav-tabs">
+                <li><a href="#" class="tab-event" data-idx="1" data-toggle="tab">用户管理</a></li>
+            </ul>
+            <%
+                include('sysmgr/user.html');
+            %>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" style="margin-top: 100px;">
+        <div class="modal-dialog" role="addModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="addModalLabel">添加用户</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="addUserName">用户名</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="addUserName" disabled/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="userrole">角色</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="userrole">
+                                <option value="rd">rd/qa/pm</option>
+                                <option value="kf">客服/大区/运营</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="userurl">限制url</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="userurl">
+                                <option value="-1">无</option>
+                            </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary js-save-user">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%
+    include('common/nav.html');
+%>
+
+<%
+    include('common/footer.html');
+%>

@@ -1,0 +1,62 @@
+<div class="table-responsive" data-module-path="gs/billPreOrder">
+    <div class="content-module" id="billPreOrder">
+        <form class="form-inline module-block">
+            <div class="form-group">
+                <label>手机号</label>
+                <input type="text" class="form-control" id="billPreOrderPhone">
+            </div>
+            <div class="form-group">
+                <label>时间范围</label>
+                <div class="input-group">
+                    <input type="text" class="form-control form_time" name="billPreOrderTimeRange" id="billPreOrderTimeRange" style="width: 280px;">
+                    <label class="input-group-addon" for="billPreOrderTimeRange"><i class="glyphicon glyphicon-calendar"></i></label>
+                </div>
+                <input type="hidden" name="billPreOrderBeginTime" id="billPreOrderBeginTime">
+                <input type="hidden" name="billPreOrderEndTime" id="billPreOrderEndTime">
+            </div>
+            <input id="billPreOrderQuery" type="button" class="btn btn-primary query-btn" value="查询">
+        </form>
+        <div class="feedback-container module-block">
+            <div class="conclusion">
+                <div class="title">概要</div>
+                <div id="billPreOrderConclusion"></div>
+            </div>
+        </div>
+        <div class="data-list-wrap module-block">
+            <table class="table table-fixed-header">
+                <thead>
+                    <tr>
+                        <th style="width:15%">
+                            模块
+                        </th>
+                        <th class="sort" style="width:20%" data-sort-for="billPreOrderTable">
+                            日志时间
+                            <span class="glyphicon glyphicon-triangle-bottom active" ></span>
+                            <span class="glyphicon glyphicon-triangle-top"></span>
+                        </th>
+                        <th>
+                            摘要
+                        </th>
+                        <th style="width:45%">
+                            原始日志
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="table-wrap">
+                <table id="billPreOrderTable" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width:15%"></th>
+                            <th style="width:20%"></th>
+                            <th></th>
+                            <th style="width:45%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="renderer" content="webkit">
+            <title>把脉平台</title>
+
+            <!-- Bootstrap -->
+            <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
+            <link href="<%= _this.rootBase %>/css/common/common.less" rel="stylesheet">
+            <link href="<%= _this.rootBase %>/dep/animate.min.css" rel="stylesheet">
+        <%
+            if (_this && _this.links) {
+                for (var i = 0, len = _this.links.length; i < len; i++) {
+        %>
+                    <link rel="stylesheet" href="<%= _this.links[i] %>" />
+        <%
+                }
+            }
+        %>
+        <!--[if lt IE 9]>
+            <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body data-module-path="main">
+        <div class="modal fade" id="starDialog">
+            <div class="modal-dialog" style="margin-top: 100px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">收藏当前页</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form">
+                            <div class="form-group">
+                                <label for="starName">名称</label>
+                                <input type="text" class="form-control js-name" id="starName" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary js-save-star" data-loading-text="收藏中...">确定</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <div class="base-header">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".user-account">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand logo-href" href="<%= _this.rootBase %>/"></a>
+                    </div>
+                    <div class="collapse navbar-collapse user-account">
+                        <ul class="mainnav-wrapper">
+                            <li><a href="<%= _this.rootBase %>/">智能硬件</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a id="user-operation-list" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                    hi，<span class="user-name"></span><span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="user-operation-list">
+                                    <li><a href="javascript:void(0);" class="logout-btn">退出登录</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!--<div class="pull-right star-action" style="display:none">
+                            <button type="button" class="btn btn-primary btn-xs star">
+                                <span class="glyphicon glyphicon-star-empty"></span>收藏页面
+                            </button>
+                            <button type="button" class="btn btn-primary btn-xs stared" disabled>
+                                <span class="glyphicon glyphicon-star"></span>已收藏
+                            </button>
+                        </div>-->
+                    </div>
+                </div>
+            </nav>
+        </div>
