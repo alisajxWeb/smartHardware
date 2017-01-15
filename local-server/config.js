@@ -6,8 +6,8 @@ module.exports = {
         value: ['/gsProxy/', '/proxy/', '/restoredataProxy', '/catchdataProxy', '/holmesProxy', '/proxyLocal'] // or array like ['/api/', '/api-prefix/']
     },
     server: {
-        host: argv.h || 'localhost',
-        port: argv.p || 8080
+        host: argv.h || '0.0.0.0',
+        port: argv.p || 7867
     },
     rootBase: '',
     cwd: process.cwd()
