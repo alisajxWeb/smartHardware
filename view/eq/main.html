@@ -1,0 +1,64 @@
+<%
+    include('common/header.html', {
+        links: [
+            _this.rootBase + '/css/eq-main.less',
+        ]
+    });
+%>
+
+    <div class="base-container" data-module-path="eq/main">
+        <div class="main-page">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation">
+                    <a href="#lab" class="tab-event" aria-controls="lab" role="tab" data-index="1" data-toggle="tab">
+                        灯<i class="iconfont icon-jujia"></i>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#curtains" class="tab-event" aria-controls="curtains" role="tab" data-index="2" data-toggle="tab">
+                    窗帘<i class="iconfont icon-window"></i>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#airConditioner" class="tab-event" aria-controls="airConditioner" role="tab" data-index="3" data-toggle="tab">
+                    空调<i class="iconfont icon-air"></i>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#tv" class="tab-event" aria-controls="tv" role="tab" data-index="4" data-toggle="tab">
+                        电视<i class="iconfont icon-computer"></i>
+                    </a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane" id="lab">
+                    <%
+                        include('eq/lab.html');
+                    %>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="curtains">
+                    <%
+                        include('eq/curtains.html');
+                    %>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="airConditioner">
+                    <%
+                        include('eq/airConditioner.html');
+                    %>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="tv">
+                    <%
+                        include('eq/tv.html');
+                    %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%
+    include('common/nav.html');
+%>
+        <%
+    include('common/footer.html');
+%>

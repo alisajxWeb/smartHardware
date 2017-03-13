@@ -1,0 +1,28 @@
+.select-tab-box {
+    position: relative;
+    z-index: 1;
+    white-space: nowrap;
+    word-break: break-all;
+    display: inline-block;
+}
+
+.select-tab-box .option-item {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-right: 5px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.select-tab-box .option-item:hover {
+    background-color: #eee;
+}
+
+.select-tab-box .option-selected,
+.select-tab-box .option-selected:hover {
+    color: #fff;
+    background-color: #09c;
+}

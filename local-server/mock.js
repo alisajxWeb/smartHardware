@@ -20,7 +20,6 @@ var config = require('./config');
 var proxyInfo;
 
 module.exports = function (req, res, next) {
-
     var reqUrl = req.url;
 
     var apiType = config.api.type;

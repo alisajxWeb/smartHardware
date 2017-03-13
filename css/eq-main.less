@@ -1,0 +1,479 @@
+@import './common/base.less';
+
+#order-price-map:-webkit-full-screen    { height: 100%; }
+#order-price-map:-moz-full-screen		{ height: 100%; }
+#order-price-map:-ms-full-screen		{ height: 100%; }
+#order-price-map:full-screen			{ height: 100%; }
+#order-price-map * {
+    box-sizing: initial;
+}
+
+@scene-h5-color:  #d0e9c6;
+@scene-app-color: #c6d0de;
+@scene-backend-color: lighten(@brand-primary, 20%);
+@scene-backend-no-order: #fcf8e3;
+.ctrl-left {
+    float: left;
+    margin-top: 30px;
+    margin-left: 80px;
+    width: 300px;
+    height: 400px;
+    border-radius: 5px;
+    background: #ffffff;
+    border: 1px solid #FA8919;
+    box-shadow: 10px 10px 5px #888888;
+    .roomBox, .equipBox{
+        display: inline-block;
+    }
+    .select-box {
+        margin: 20px;
+        .option-list-wrap {
+            padding:0; 
+            li {
+                margin:0; 
+                list-style: none;
+            }
+        }
+    }
+
+    .ctrl-box {
+        .ctrl-blcok {
+            margin-top: 15px;
+            .icon-off {
+                cursor: pointer;
+            }
+            .icon-off:hover{
+                color: #FA8919;
+            }
+            p {
+                color: #888888;
+            }
+            .timeSapn {
+                text-align: left; 
+                margin-left: 10px;
+            }
+            .timeInput {
+                cursor: text;
+                border: 1px solid #FA8919;
+                border-radius: 5px;
+            }
+            .timeInput:focus {
+                box-shadow: 3px 3px 2px #888888;
+            }
+        }
+        .ctrl-button {
+            margin-top: 20px;
+            .js-button {
+                background-color:#FA8919;
+                color: #ffffff;
+                width: 80px;
+                height: 30px;
+                border-radius: 5px;
+                border: 1px solid #fcf8e3;
+            }
+            .js-button:hover{
+                background-color:#ff9900;
+            }
+        }
+        text-align: center;
+    }
+}
+.ctrl-right {
+    float: right;
+    width: 300px;
+    height: 400px;
+    margin-right: 80px;
+    margin-top: 30px;
+    .light {
+        width: 200px;
+        height: 320px;
+        border-radius: 10px;
+        border: 1px solid #ffffff;
+    }
+    .light-L {
+        background: linear-gradient(#FA8919,rgba(255,0,0,0))
+    }    
+    .light-D {
+        background: linear-gradient(#eeeeee,rgba(255,0,0,0))
+    }
+}
+.select-box {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    white-space: nowrap;
+    word-break: break-all;
+    text-align: center;
+}
+
+.select-box.can-filter {
+    width: 100%;
+}
+
+.select-box.can-filter .option-box:after {
+    content: '...'
+}
+
+.select-box.can-filter .option-list-wrap {
+    max-height: 200px;
+    overflow: auto;
+}
+
+.select-box.can-filter .option-box {
+    max-height: initial;
+}
+
+.select-box .select-title {
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    color: #666;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    padding: 0 10px;
+    border-radius: 5px;
+    border-bottom: 1px solid #999;
+    background-color: #fff;
+}
+
+.select-box .select-title:hover {
+    color: #06c;
+    background-color: #eee;
+}
+
+.select-box .select-title .icon {
+    width: 10px;
+    height: 10px;
+    font-size: 18px;
+    position: relative;
+    top: -4px;
+    vertical-align: middle;
+}
+
+.select-box .option-box {
+    width: 100%;
+    max-height: 300px;
+    position: absolute;
+    left: 0;
+    top: 35px;
+    z-index: 1;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 6px 0 #999;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: none;
+}
+
+.select-box .filter-box {
+    padding: 5px;
+}
+
+.select-box .filter-box .filter-input {
+    width: 90%;
+    border-radius: 5px;
+    margin: 0 auto;
+    padding: 5px 2px;
+    display: block;
+}
+
+.select-box .option-item {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.select-box .option-item:hover {
+    background-color: #eee;
+}
+
+.select-box .option-selected,
+.select-box .option-selected:hover {
+    color: #fff;
+    background-color: #09c;
+}
+
+
+/* select-box-disable */
+
+.select-box.select-box-disable .select-title,
+.select-box.select-box-disable .select-title:hover {
+    color: #999;
+    background-color: #eee;
+    cursor: default;
+}
+
+.select-box.select-box-disable .option-box {
+    display: none !important;
+}
+/*  
+	-------------------------	jQuery DateTimePicker v0.1.1	----------------------------
+	
+	Version 0.1.1
+	Copyright 2014 Curious Solutions Pvt Ltd and Neha Kadam
+	
+	https://github.com/CuriousSolutions/DateTimePicker
+	
+*/
+
+.dtpicker-overlay
+{
+	z-index: 2000;
+	display:none;
+	min-width: 300px;
+
+	background: rgba(0, 0, 0, 0.2);
+	font-size: 70%;
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.dtpicker-mobile
+{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+
+	width: 100%;
+	height: 100%;
+}
+
+.dtpicker-overlay * 
+{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-ms-box-sizing: border-box;
+
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.dtpicker-bg
+{
+	width: 100%;
+	height: 100%;
+
+	font-family: Arial;
+}
+
+.dtpicker-cont
+{
+	border: 1px solid #ECF0F1;
+}
+
+.dtpicker-mobile .dtpicker-cont
+{
+	position: relative;
+	top: 50%;
+
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+
+	border: none;
+}
+
+.dtpicker-content
+{
+	margin: 0px auto;
+	padding: 1em 0em;
+
+	max-width: 500px;
+
+	background: #fff;
+}
+
+.dtpicker-mobile .dtpicker-content
+{
+	width: 97%;	
+}
+
+.dtpicker-subcontent
+{
+	position: relative;
+}
+
+.dtpicker-header
+{
+	margin: 0.2em 1em;
+}
+
+.dtpicker-header .dtpicker-title
+{
+	color: #2980B9;
+	text-align: center;
+	font-size: 1.3em;
+}
+
+.dtpicker-header .dtpicker-close
+{
+	position: absolute;
+	top: -0.7em;
+	right: 0.3em;
+	
+	padding: 0.5em 0.5em 1em 1em;
+	
+	color: #FA8919;
+	font-size: 1.5em;
+	
+	cursor: pointer;
+}
+
+.dtpicker-header .dtpicker-close:hover
+{
+	color: #FA8919;
+}
+
+.dtpicker-header .dtpicker-value
+{
+	padding:  0.8em 0.2em 0.2em 0.2em;
+	color: #FA8919;
+	text-align: center;
+
+	font-size: 1.4em;
+}
+
+.dtpicker-components
+{
+	overflow: hidden;
+	margin: 1em 1em;
+	
+	font-size: 1.4em;
+}
+
+.dtpicker-components *
+{
+	margin: 0px;
+	padding: 0px;
+}
+
+.dtpicker-components .dtpicker-compOutline
+{
+	display: inline-block;
+	float: left;
+}
+
+.dtpicker-comp2
+{
+	width: 50%;
+}
+
+.dtpicker-comp3
+{
+	width: 33.3%;
+}
+
+.dtpicker-comp5
+{
+	width: 20%;
+}
+
+.dtpicker-comp6
+{
+	width: 16.66%;
+}
+
+.dtpicker-components .dtpicker-comp
+{
+	margin: 2%;
+	text-align: center;
+}
+
+.dtpicker-components .dtpicker-comp > *
+{
+	display: block;
+	height: 30px;
+
+	color: #2980B9;
+
+	text-align: center;
+	line-height: 30px;
+}
+
+.dtpicker-components .dtpicker-comp > *:hover
+{
+	color: #2980B9;
+}
+
+.dtpicker-components .dtpicker-compButtonEnable
+{
+	opacity: 1;
+}
+
+.dtpicker-components .dtpicker-compButtonDisable
+{
+	opacity: 0.5;
+}
+
+.dtpicker-components .dtpicker-compButton
+{
+	background: #FFFFFF;
+	font-size: 140%;
+
+	cursor: pointer;
+}
+
+.dtpicker-components .dtpicker-compValue
+{
+	margin: 0.4em 0em;
+	width: 100%;
+	border: none;
+	background: #FFFFFF;
+
+	font-size: 100%;
+
+	-webkit-appearance: none;
+}
+
+.dtpicker-overlay .dtpicker-compValue:focus
+{
+	outline: none;
+	background: #F2FCFF;
+}
+
+.dtpicker-buttonCont
+{
+	overflow: hidden;
+	margin: 0.2em 1em;
+}
+
+.dtpicker-buttonCont .dtpicker-button
+{
+	display: block;
+	padding: 0.6em 0em;
+	width: 47%;
+	background: #FA8919;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 1.5em;
+
+	cursor: pointer;
+}
+
+.dtpicker-buttonCont .dtpicker-button:hover
+{
+	color: #FFFFFF;
+}
+
+.dtpicker-singleButton .dtpicker-button
+{
+	margin: 0.2em auto;
+}
+
+.dtpicker-twoButtons .dtpicker-buttonSet
+{
+	float: left;
+}
+
+.dtpicker-twoButtons .dtpicker-buttonClear
+{
+	float: right;
+}

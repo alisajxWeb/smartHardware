@@ -156,11 +156,6 @@ define(function (require, exports) {
         }
     }
 
-    function resetTimeRange(timeRange, autoQuerys, beginTime, endTime) {
-        setTimerangeDisplayValue(autoQuerys[beginTime], autoQuerys[endTime], timeRange);
-        $('#' + timeRange).daterangepicker(getTimerangeInit(autoQuerys[beginTime], autoQuerys[endTime]), setTimerangeValue(beginTime, endTime))
-    }
-
     exports.init = function () {
 
         var host = location.hostname;
@@ -202,7 +197,7 @@ define(function (require, exports) {
         });
 
         emitter.on('reset_timerange', function (data) {
-            resetTimeRange(data.key, autoQuerys, data.keyStartTime, data.keyEndTime);
+            // resetTimeRange(data.key, autoQuerys, data.keyStartTime, data.keyEndTime);
         });
 
         emitter.on('update_table', function (data) {

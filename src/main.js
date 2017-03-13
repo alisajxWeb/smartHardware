@@ -9,7 +9,6 @@ define(function (require, exports) {
     var store = require('common/store');
 
     var userService = require('service/common/user-service');
-    var myService = require('service/my-favourite-main');
 
     function loadOMG() {
         window.Omega = {
@@ -108,28 +107,6 @@ define(function (require, exports) {
                 });
             });
 
-            myService.getList().done(function (response) {
-                var startUrls = store.get('stared');
-                var url = window.location.pathname + window.location.search + window.location.hash;
-                
-                if (!startUrls) {
-                    startUrls = {};
-                    store.set('stared', startUrls);
-                }
-
-                response.forEach(function (item) {
-                    startUrls[item.key.substring(item.key.indexOf('#') + 1)] = true;
-                });
-
-                if (startUrls[url]){
-                    starContainer.addClass('stared');
-                } else {
-                    starContainer.removeClass('stared');
-                }
-
-                starContainer[canStar() ? 'show' : 'hide']();
-            });
-            
         })(moduleNode);
 
         userService.getUserData(Math.round(Math.random() * 100)).done(function (resp) {

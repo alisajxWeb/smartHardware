@@ -1,0 +1,110 @@
+.select-box {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    white-space: nowrap;
+    word-break: break-all;
+    text-align: center;
+}
+
+.select-box.can-filter {
+    width: 100%;
+}
+
+.select-box.can-filter .option-box:after {
+    content: '...'
+}
+
+.select-box.can-filter .option-list-wrap {
+    max-height: 200px;
+    overflow: auto;
+}
+
+.select-box.can-filter .option-box {
+    max-height: initial;
+}
+
+.select-box .select-title {
+    height: 30px;
+    line-height: 30px;
+    color: #666;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #999;
+    background-color: #fff;
+}
+
+.select-box .select-title:hover {
+    color: #06c;
+    background-color: #eee;
+}
+
+.select-box .select-title .icon {
+    width: 10px;
+    height: 10px;
+    font-size: 18px;
+    position: relative;
+    top: -4px;
+    vertical-align: middle;
+}
+
+.select-box .option-box {
+    width: 100%;
+    max-height: 300px;
+    position: absolute;
+    left: 0;
+    top: 35px;
+    z-index: 1;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 6px 0 #999;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: none;
+}
+
+.select-box .filter-box {
+    padding: 5px;
+}
+
+.select-box .filter-box .filter-input {
+    width: 90%;
+    border-radius: 5px;
+    margin: 0 auto;
+    padding: 5px 2px;
+    display: block;
+}
+
+.select-box .option-item {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.select-box .option-item:hover {
+    background-color: #eee;
+}
+
+.select-box .option-selected,
+.select-box .option-selected:hover {
+    color: #fff;
+    background-color: #09c;
+}
+
+
+/* select-box-disable */
+
+.select-box.select-box-disable .select-title,
+.select-box.select-box-disable .select-title:hover {
+    color: #999;
+    background-color: #eee;
+    cursor: default;
+}
+
+.select-box.select-box-disable .option-box {
+    display: none !important;
+}
