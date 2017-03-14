@@ -81,14 +81,14 @@ define(function (require, exports) {
             params: params,
             success: function (data) {
                 var response1 = JSON.parse(data.responseText);
-                if (response1.status.statusCode === 0) {
+                if (response1.status.code === 0) {
                     if (response1.result.status === 1) {
                         $('.light').removeClass('light-D').addClass('light-L');
                     } else {
                         $('.light').removeClass('light-L').addClass('light-D');
                     }
                 } else {
-                    alert(response1.status.statusReason);
+                    alert(response1.status.reason);
                 }
             }
         });
@@ -98,7 +98,7 @@ define(function (require, exports) {
             params: params,
             success: function (data) {
                 var response2 = JSON.parse(data.responseText);
-                if (response2.status.statusCode === 0) {
+                if (response2.status.code === 0) {
                     // if ($('.light').hasClass('light-L')) {
                     //     $('.light').removeClass('light-L').addClass('light-D');
                     // } else {
@@ -106,7 +106,7 @@ define(function (require, exports) {
                     // }
                 getStatus();
                 } else {
-                    alert(response2.status.statusReason);
+                    alert(response2.status.reason);
                 }
             }
         });
@@ -117,10 +117,10 @@ define(function (require, exports) {
             params: params2,
             success: function (data) {
                 var response3 = JSON.parse(data.responseText);
-                if (response3.status.statusCode === 0) {
+                if (response3.status.code === 0) {
                     alert('设置成功！');
                 } else {
-                    alert(response3.status.statusReason);
+                    alert(response3.status.reason);
                 }
             }
         });

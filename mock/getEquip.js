@@ -6,7 +6,7 @@ module.exports = {
         "timeoutStatus": 1,
     },
     "status": {
-        "statusCode": 0,
-        "statusReason": ""
+        "code": 0,
+        "reason": ""
     }
 }

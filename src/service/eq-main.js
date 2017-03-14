@@ -8,10 +8,11 @@ define(function (require, exports) {
     var ajax = require('service/ajax');
 
     function fillParams(url, params) {
+        var hostName = 'http://api.alisablog.cn';
         url = url.replace(/\{([^}]*)\}/g, function (all, key) {
             return ((key === 'param' && params[key]) ? encodeURIComponent(JSON.stringify(params[key])) : encodeURIComponent(params[key] || ''));
         });
-        return url;
+        return hostName + url;
     }
     exports.getStatus = function getStatus(options) {
         var url = '/eq/getEquip?equipId={equipId}';
@@ -20,8 +21,6 @@ define(function (require, exports) {
             url: url,
             type: "GET",
             dataType: 'jsonp',
-            jsonp:"callback",
-            jsonpCallback: "jsonpCallback",
             scriptCharset: 'UTF-8',
             success: options.success,
             error: options.success
@@ -35,8 +34,6 @@ define(function (require, exports) {
             url: url,
             type: "GET",
             dataType: 'jsonp',
-            jsonp:"callback",
-            jsonpCallback: "jsonpCallback",
             scriptCharset: 'UTF-8',
             success: options.success,
             error: options.success
@@ -50,8 +47,6 @@ define(function (require, exports) {
             url: url,
             type: "GET",
             dataType: 'jsonp',
-            jsonp:"callback",
-            jsonpCallback: "jsonpCallback",
             scriptCharset: 'UTF-8',
             success: options.success,
             error: options.success
