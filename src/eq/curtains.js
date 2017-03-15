@@ -6,12 +6,10 @@ define(function (require, exports) {
     require('./DateTimePicker');
 
     var params = {
-        equipId: 8
-    };
-    var params2 = {
-        equipId: params.equipId,
-        timeoutTime: '',
-        timeoutStatus: '0',
+        "equipId": '8',
+        "status": '0',
+        "timeoutTime": '',
+        "timeoutStatus": '0',
     };
     var room = {
         "room1": [{
@@ -67,18 +65,25 @@ define(function (require, exports) {
             }
         });
     };
-    var getStatus = function () {
+    var getStatus = function (isFirst) {
         service.getStatus({
             params: params,
             success: function (data) {
-                var response1 = JSON.parse(data.responseText);
+                var response1 = data;                
                 if (response1.status.code === 0) {
-                    // if (response1.result.status === 1) {
-                    //     $('.light').removeClass('light-D').addClass('light-L');
-                    // } else {
-                    //     $('.light').removeClass('light-L').addClass('light-D');
-                    // }
+                    if (response1.result.status === '1') { 
+                        //$('.light').removeClass('light-D').addClass('light-L'); 
+                        params.status = '1'; 
+                    } else if(response1.result.status === '0'){
+                        //$('.light').removeClass('light-L').addClass('light-D');
+                        params.status = '0';
+                    } else {
+                        params.status = '0';
+                        setStatue();
+                        alert('已调整为关闭状态');
+                    }
                 } else {
+                    !isFirst &&
                     alert(response1.status.reason);
                 }
             }
@@ -88,14 +93,9 @@ define(function (require, exports) {
         service.setStatus({
             params: params,
             success: function (data) {
-                var response2 = JSON.parse(data.responseText);
+                var response2 = data;
                 if (response2.status.code === 0) {
-                    // if ($('.light').hasClass('light-L')) {
-                    //     $('.light').removeClass('light-L').addClass('light-D');
-                    // } else {
-                    //     $('.light').removeClass('light-D').addClass('light-L');
-                    // }
-                getStatus();
+                    getStatus();
                 } else {
                     alert(response2.status.reason);
                 }
@@ -106,13 +106,14 @@ define(function (require, exports) {
     exports.init = function () {
         var container = this;
         var tabIndex = 1;
-        getStatus();
+        getStatus(true);
         renderRoomSelect();
         renderEquipSelect();
         emitter.fire('auto_query', { index: tabIndex });
     };
 
     $('.cutainsPage').find('.icon-off').on('click', function () {
+        params.status = params.status ==='0' ? '1': '0';
         setStatus();
     });
 });

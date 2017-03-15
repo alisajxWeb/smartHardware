@@ -28,7 +28,7 @@ define(function (require, exports) {
     };
 
     exports.setStatus = function setStatus(options) {
-        var url = '/eq/setEquip?equipId={equipId}';
+        var url = '/eq/setEquip?equipId={equipId}&status={status}';
         url = fillParams(url, options.params);
         return $.ajax({
             url: url,

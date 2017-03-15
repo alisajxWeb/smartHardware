@@ -2,14 +2,16 @@ define(function (require, exports) {
     var emitter = require('common/eventEmitter');
     var utils = require('common/utils');
     var store = require('common/store');
-    // var select = require('common/select/selectService');
-
+    var service = require('service/eq-main');
     var feedbackMaps = {};
 
     require('./lab');
     require('./curtains');
     require('./airConditioner');
     require('./tv');
+    var params = {"equipId": 1}; 
+            
+            
 
     function setQuery() {
         var querys = utils.getQuery(true);
@@ -18,7 +20,17 @@ define(function (require, exports) {
         }
         return querys;
     }
-
+    var getStatus = function (index) {
+        service.getStatus({
+            params: params,
+            success: function (data) {
+                var response1 = data;
+                if (response1.status.code !== 0) {
+                    alert(response1.status.reason);
+                }
+            }
+        });
+    };
     exports.init = function () {
 
         var host = location.hostname;
@@ -30,6 +42,18 @@ define(function (require, exports) {
 
         $('.main-page .nav-tabs').on('shown.bs.tab', function (e) {
             var target = $(e.target);
+            var dataIndex = $(target[0]).attr('data-index');
+            switch(dataIndex){
+                case 1: params.equipId = '1';
+                    break;
+                case 2: params.equipId = '8';
+                    break;
+                case 3: params.equipId = '12';
+                    break;
+                case 4: params.equipId = '14';
+                    break;
+            }
+            getStatus(dataIndex);
             var feedback = feedbackMaps[target.data('index')];
             if (feedback && feedback.params.moduleUrl) {
                 window.location.hash = store.get(feedback.params.moduleUrl).split('#')[1];
