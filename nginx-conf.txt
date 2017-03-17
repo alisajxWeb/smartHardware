@@ -99,7 +99,6 @@ server {
     # router of path to html file
     location / {
        	add_header   Cache-Control  no-cache;
-        set $index_view "/view/welcome.html";
 
        	 if ($mobile_agent = 1) {
             set $index_view "/view/index.html";
@@ -111,7 +110,6 @@ server {
         if ($mobile_agent = 0){
             #router of path to html file
             root /home/work/app/bamai-ui/output/;
-            rewrite ^/gs/instruction$ /view/instruction.html;
             rewrite ^/location$ /view/location.html;
             rewrite ^/jsonView$ /view/jsonView.html;
             rewrite ^/noAuth$ /view/403.html;
