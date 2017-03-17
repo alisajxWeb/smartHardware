@@ -251,7 +251,7 @@
             <%
             }else if(tmp.orderId != null && tmp.orderId != undefined && tmp.orderId != ''){
             %>
-                <td class="orderIdtd"><a href="/gs/main#?beginTime=<%=# _this.beginTime %>&endTime=<%=# _this.endTime %>&queryBtn=restoreBtn&tabIndex=8&tripId=<%=# tmp.orderId %>" target="_blank"><input class="detailButton" type="button" value="详情"></a></td>
+                <td class="orderIdtd"><a href="/eq/main#?beginTime=<%=# _this.beginTime %>&endTime=<%=# _this.endTime %>&queryBtn=restoreBtn&tabIndex=8&tripId=<%=# tmp.orderId %>" target="_blank"><input class="detailButton" type="button" value="详情"></a></td>
             <%
             }else{
             %>
