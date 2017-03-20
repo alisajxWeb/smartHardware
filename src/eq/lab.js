@@ -114,7 +114,7 @@ define(function (require, exports) {
 
     var setTimeout = function () {
         service.timeOut({
-            params: params2,
+            params: params,
             success: function (data) {
                 var response3 = data;
                 if (response3.status.code === 0) {
@@ -141,13 +141,13 @@ define(function (require, exports) {
     });
     $('.labPage').find('.radio').on('click', function () {
         var value = this.value;
-        params2.timeoutStatus = value === '0' ? '0' : '1';
+        params.timeoutStatus = value === '0' ? '0' : '1';
     });
     $('.labPage').find('.js-button').on('click', function () {
         var timeSet = $.trim($('.labPage').find('.timeSet').val());
         if(timeSet!=='') {
-            params2.equipId = params.equipId,
-            params2.timeoutTime = timeSet,
+            params.equipId = params.equipId,
+            params.timeoutTime = timeSet,
             setTimeout();
         } else {
             alert('请设置时间')
