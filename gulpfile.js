@@ -58,8 +58,8 @@ gulp.task('copy', function () {
         .pipe(gulp.dest(path.join(buildPath, 'dep')));
 });
 
-gulp.task('favicon', function () {
-    return gulp.src('favicon.ico')
+gulp.task('faviconHouse', function () {
+    return gulp.src('faviconHouse.ico')
         .pipe(gulp.dest(buildPath))
 })
 
@@ -68,7 +68,7 @@ gulp.task('build', sequence(
     ['htmlmin', 'imagemin',  'copy'], // 图片依赖libc.so.6: version `GLIBC_2.14'
     'componentsExports',
     'jsmd5',
-    'favicon'
+    'faviconHouse'
 ));
 
 gulp.task('connect', server);
