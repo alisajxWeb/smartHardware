@@ -72,10 +72,10 @@ define(function (require, exports) {
                 var response1 = data;                
                 if (response1.status.code === 0) {
                     if (response1.result.status === '1') { 
-                        //$('.light').removeClass('light-D').addClass('light-L'); 
+                        $('.curtains-img').attr("src", "/img/open.png");
                         params.status = '1'; 
                     } else if(response1.result.status === '0'){
-                        //$('.light').removeClass('light-L').addClass('light-D');
+                        $('.curtains-img').attr("src", "/img/close.png");
                         params.status = '0';
                     } else {
                         params.status = '0';
