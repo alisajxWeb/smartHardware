@@ -1,13 +1,89 @@
 <%
     include('common/header.html', {
         links: [
-            _this.rootBase + '/css/manager-main.less'
+            _this.rootBase + '/css/manager-main.less',
+            
+            _this.rootBase + '/css/eq-main.less'
         ]
     });
 %>
 
     <div class="base-container" data-module-path="manager/main">
         <div class="main-page">
+            <div class="add-equip">
+                <i class="iconfont icon-jiahao"></i>
+                <span>    添加设备</span>
+            </div>
+            <div class="eq-table">
+                <table>
+                    <thead>
+                        <td style="width: 120px;">设备名</td>
+                        <td style="width: 120px;">位置</td>
+                        <td style="width: 120px;">类别</td>
+                        <td style="width: 120px;">操作</td>
+                    </thead>
+                    <tbody>
+                        <tr class="1">
+                            <td>台灯</td><td>卧室1</td><td>灯</td>
+                            <td><input class="mana-del" type="button" value="删除"/></td>
+                        </tr>
+                        <tr class="2"><td>落地灯1</td><td>卧室1</td><td>灯</td>
+                            <td><input class="mana-del" type="button" value="删除"/></td>
+                        </tr>
+                        <tr class="3"><td>射灯</td><td>卧室1</td><td>灯</td>
+                            <td><input class="mana-del" type="button" value="删除"/></td>
+                        </tr>
+                        <tr class="4"><td>吊灯</td><td>卧室1</td><td>灯</td>
+                            <td><input class="mana-del" type="button" value="删除"/></td>
+                        </tr>
+                        <tr class="5"><td>窗帘</td><td>卧室1</td><td>窗帘</td>
+                            <td><input class="mana-del" type="button" value="删除"/></td>
+                        </tr>
+                        <tr class="6"><td>空调</td><td>卧室1</td><td>空调</td>
+                            <td><input class="mana-del" type="button" value="删除"/></td>
+                        </tr>
+                        <tr class="7"><td>投影机</td><td>卧室1</td><td>电视</td>
+                            <td><input class="mana-del" type="button" value="删除"/></td>
+                        </tr>
+                        <tr class="8"><td>吊灯</td><td>客厅</td><td>灯</td>
+                            <td><input class="mana-del" type="button" value="删除"/></td>
+                        </tr>
+                        <tr class="9"><td>射灯</td><td>客厅</td><td>灯</td>
+                            <td><input class="mana-del" type="button" value="删除"/></td>
+                        </tr>
+                        <tr class="10"><td>遮光帘</td><td>客厅</td><td>窗帘</td>
+                            <td><input class="mana-del" type="button" value="删除"/></td>
+                        </tr>
+                        <tr class="11"><td>窗帘</td><td>客厅</td><td>窗帘</td>
+                            <td><input class="mana-del" type="button" value="删除"/></td>
+                        </tr>
+                        <tr class="12"><td>加湿器</td><td>客厅</td><td>空调</td>
+                            <td><input class="mana-del" type="button" value="删除"/></td>
+                        </tr>
+                        <tr class="13"><td>电视</td><td>客厅</td><td>电视</td>
+                            <td><input class="mana-del" type="button" value="删除"/></td>
+                        </tr>
+                        <tr class="14"><td>台灯</td><td>儿童房</td><td>灯</td>
+                            <td><input class="mana-del" type="button" value="删除"/></td>
+                        </tr>
+                        <tr class="15"><td>窗帘</td><td>儿童房</td><td>窗帘</td>
+                            <td><input class="mana-del" type="button" value="删除"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="add-box">
+                <div class="eq-shadow"></div>
+                <div class="eq-addAlert" >
+                    <div class="sp">添加设备</div>
+                    <div class="selectBox">
+                        <div class="romBox box"></div>
+                        <div class="clsBox box"></div>
+                    </div>
+                    <input class="nameBox" placeholder="请输入设备名称"/>
+                    <input class="addeq-btn" value="添加" type="button" />
+                </div>
+            </div>
         </div>
     </div>
 
