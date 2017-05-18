@@ -21,6 +21,6 @@ define(function (require, exports) {
     }
 
     exports.init = function () {
-        loadQQMap(mapInit);
+        //loadQQMap(mapInit);
     }
 });

@@ -2,7 +2,7 @@ module.exports = [
     [
         '/',
         function () {
-            return 'eq/main.html';
+            return 'login/login.html';
         }
     ],
     [

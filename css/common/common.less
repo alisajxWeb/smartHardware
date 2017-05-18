@@ -4,6 +4,48 @@ body {
     height: 100%;
     background-color: #edeef1;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    
+    .login-page {	
+        height: 100%;
+        background:#8BB82F; /* 一些不支持背景渐变的浏览器 */ 
+        background:-moz-linear-gradient(top, #416D14, rgba(139, 794, 47, 0.5));  
+        background:-webkit-gradient(linear, 0 0, 0 bottom, from(#416D14), to(rgba(139, 794, 47, 0.5)));  
+        background:-o-linear-gradient(top, #416D14, rgba(139, 794, 47, 0.5));
+        .login-mid {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            margin: 0 0 0 -10%;
+        }
+        .login-box {
+            width: 300px;
+            height: 45px;
+            border: 1px solid #8BB82F;
+            background: #ffffff;
+            margin-top: 30px;
+        }
+        .login-inp {
+            border: 0;
+            width: 250px;
+            height: 40px;
+            margin-left: 10px;
+        }
+        .login-btn {
+            width: 300px;
+            height: 45px;
+            border: 0;
+            background:#416D14;
+            color: #ffffff;
+            margin-top: 30px;
+
+            font-weight: 600;
+            font-size: 18px;
+            background:#8BB82F; /* 一些不支持背景渐变的浏览器 */ 
+            background:-moz-linear-gradient(top, #416D14, rgba(139, 794, 47, 0.5));  
+            background:-webkit-gradient(linear, 0 0, 0 bottom, from(#416D14), to(rgba(139, 794, 47, 0.5)));  
+            background:-o-linear-gradient(top, #416D14, rgba(139, 794, 47, 0.5));
+        }
+    }
 }
 
 .iconfont {
