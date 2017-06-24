@@ -19,8 +19,11 @@ define(function (require, exports) {
 
     var renderRoomSelect = function () {        
        var count = 0;
+        debugger
         for(var key in Window.info) {
-            if(key === '灯'){
+            if(key === '灯')
+            {
+                debugger
                 info = Window.info[key];
                 for(var key2 in info){
                     var tempHash = {title: '',value: '', checked: false};

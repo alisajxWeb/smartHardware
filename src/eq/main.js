@@ -4,13 +4,14 @@ define(function (require, exports) {
     var store = require('common/store');
     var service = require('service/eq-main');
     var feedbackMaps = {};
-
+    
     (function getUserEquips() {
         service.getUserEquips({
             success: function (data) {
                 var data = JSON.parse(data.responseText);
                 if(data.status.code === 0) {
                     Window.info = data.result;
+                    require('./lab');
                 } else {
                     alert(data.status.reason);
                 }
@@ -20,7 +21,7 @@ define(function (require, exports) {
             }
         });
     }());
-    require('./lab');
+   // require('./lab');
     require('./curtains');
     require('./airConditioner');
     require('./tv');
@@ -45,7 +46,7 @@ define(function (require, exports) {
         });
     };
     
-    exports.init = function () {
+    exports.init = function () {  
         var host = location.hostname;
         var mainPageContainer = $(this.element);
         var autoQuerys = setQuery();
