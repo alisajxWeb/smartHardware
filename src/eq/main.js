@@ -5,13 +5,26 @@ define(function (require, exports) {
     var service = require('service/eq-main');
     var feedbackMaps = {};
 
+    (function getUserEquips() {
+        service.getUserEquips({
+            success: function (data) {
+                var data = JSON.parse(data.responseText);
+                if(data.status.code === 0) {
+                    Window.info = data.result;
+                } else {
+                    alert(data.status.reason);
+                }
+            },
+            error: function() {
+                alert('网络失败，请重新登录！');
+            }
+        });
+    }());
     require('./lab');
     require('./curtains');
     require('./airConditioner');
     require('./tv');
     var params = {"equipId": 1}; 
-            
-            
 
     function setQuery() {
         var querys = utils.getQuery(true);
@@ -31,15 +44,13 @@ define(function (require, exports) {
             }
         });
     };
+    
     exports.init = function () {
-
         var host = location.hostname;
         var mainPageContainer = $(this.element);
         var autoQuerys = setQuery();
         var inited = false;
         var firstUrl = true;
-  
-
         $('.main-page .nav-tabs').on('shown.bs.tab', function (e) {
             var target = $(e.target);
             var dataIndex = $(target[0]).attr('data-index');

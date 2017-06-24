@@ -28,7 +28,7 @@ define(function (require, exports) {
     };
 
     exports.setStatus = function setStatus(options) {
-        var url = '/eq/setEquip?equipId={equipId}&status={status}';
+        var url = '/eq/setEquipStatus?equipId={equipId}&status={status}';
         url = fillParams(url, options.params);
         return $.ajax({
             url: url,
@@ -41,8 +41,19 @@ define(function (require, exports) {
     };
 
     exports.timeOut = function timeOut(options) {
-        var url = '/eq/timeout?equipId={equipId}&timeoutTime={timeoutTime}&timeoutStatus={timeoutStatus}';
+        var url = '/eq/setEquipTimeout?equipId={equipId}&timeoutTime={timeoutTime}&timeoutStatus={timeoutStatus}';
         url = fillParams(url, options.params);
+        return $.ajax({
+            url: url,
+            type: "GET",
+            dataType: 'jsonp',
+            scriptCharset: 'UTF-8',
+            success: options.success,
+            error: options.success
+        });
+    };
+    exports.getUserEquips = function getUserEquips(options) {
+        var url = '/eq/getUserEquips';
         return $.ajax({
             url: url,
             type: "GET",

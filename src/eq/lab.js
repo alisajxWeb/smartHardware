@@ -5,58 +5,62 @@ define(function (require, exports) {
     var select = require('common/select/list/list');
     require('./DateTimePicker');
 
+
     var params = {
         "equipId": '1',
         "status": '0',
         "timeoutTime": '',
         "timeoutStatus": '0',
     };
-    var room = {
-        "room1": [{
-            title: '台灯',
-            value: 1,
-            checked: true
-        }, {
-            title: '落地灯1',
-            value: 2
-        }, {
-            title: '射灯',
-            value: 3
-        }, {
-            title: '吊灯',
-            value: 4
-        }],
-        "room2": [{
-            title: '吊灯',
-            value: 5,
-            checked: true
-        }, {
-            title: '射灯',
-            value: 6
-        }],
-        "room3": [{
-            title: '台灯',
-            value: 7,
-            checked: true
-        }]
-    };
-    var equipList = room['room1'];
-    var renderRoomSelect = function () {
+    var info = '';
+    var roomArr = [];
+    var equipLists = {};
+    var equipList = equipLists['room1'];
+
+    var renderRoomSelect = function () {        
+       var count = 0;
+        for(var key in Window.info) {
+            if(key === '灯'){
+                info = Window.info[key];
+                for(var key2 in info){
+                    var tempHash = {title: '',value: '', checked: false};
+                    if(key2 !== ''){
+                        count ++;
+                        tempHash.title = key2;
+                        tempHash.value = 'room' + count;
+                        if(count === 1) {
+                            tempHash.checked = true;
+                        }
+                        roomArr.push(tempHash);
+                    }
+                }
+            }
+        }
+        var i = 0;
+        var len1 = roomArr.length;
+        for(i; i < len1; i++) {
+            var j = 0;
+            var roomNum = roomArr[i].value;
+            var roomName = roomArr[i].title;
+            equipLists[roomNum] = [];
+            var roomN = info[roomName];
+            var len2 = roomN.length;
+            for(j; j< len2; j++){
+                var temp = {title: '', value: '', checked: false };
+                temp.value = roomN[j].id;
+                temp.title = roomN[j].name;
+                if(j === 0){
+                    temp.checked = true;
+                }
+                equipLists[roomNum].push(temp);
+            }
+        }
+        equipList = equipLists['room1'];
         new select.init({
             container: $('.labPage').find('.roomBox'),
-            selectList: [{
-                title: '卧室1',
-                value: 'room1',
-                checked: true
-            }, {
-                title: '客厅',
-                value: 'room2'
-            }, {
-                title: '儿童房',
-                value: 'room3'
-            }],
+            selectList: roomArr,
             clickCallback: function (value) {
-                equipList = room[value];
+                equipList = equipLists[value];
                 $('.labPage').find('.equipBox').html('');
                 renderEquipSelect();
                 params.equipId = equipList[0].value;
@@ -125,7 +129,9 @@ define(function (require, exports) {
             }
         });
     };
+
     exports.init = function () {
+        info = Window.info;
         var container = this;
         var tabIndex = 1;
         $('.labPage').find("#lightBox").DateTimePicker();

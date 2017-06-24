@@ -51,7 +51,20 @@ define(function (require, exports) {
         var moduleNode = this.element;
 
         moduleNode.find('.user-account .logout-btn').click(function () {
-            userService.logout();
+            userService.logout({
+                success: function(data) {
+                    var info = JSON.parse(data.responseText);
+                    if(info.status.code === 0) {
+                        alert('已退出登录');
+                        window.location.href = '/';
+                    } else {
+                        alert('退出失败');
+                    }
+                },
+                error: function (){
+                    alert('网络错误，退出失败')
+                }
+            });
         });
 
         (function () {

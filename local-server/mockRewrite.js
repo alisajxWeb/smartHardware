@@ -39,6 +39,32 @@ module.exports = function (req, res, next) {
                 url =  url + 'equipId=' + equipId + '&timeoutTime=' + timeoutTime + '&timeoutStatus=' + timeoutStatus;
                 req.url = url;
             }
+        },
+        {
+            rule: /^\/uss\/login\/(\d+)$/,
+            proxy: function rewrite(req, userName, password) {
+                var url = req.url;
+                url = url.replace('/' + userName, '').replace('/' + password, '');
+                url = mergeUrl(url);
+                url =  url + 'userName=' + userName + '&password=' + password ;
+                req.url = url;
+            }
+        },
+        {
+            rule: /^\/uss\/logout\/(\d+)$/,
+            proxy: function rewrite(req) {
+                var url = req.url;
+                url = mergeUrl(url);
+                req.url = url;
+            }
+        },
+        {
+            rule: /^\/eq\/getUserEquips\/(\d+)$/,
+            proxy: function rewrite(req) {
+                var url = req.url;
+                url = mergeUrl(url);
+                req.url = url;
+            }
         }
     ];
 

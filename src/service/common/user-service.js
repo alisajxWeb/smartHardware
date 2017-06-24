@@ -15,9 +15,19 @@ define(function (require, exports) {
         return ajax.get('/proxyLocal/userInfo', params, options);
     };
 
-    exports.logout = function (params) {
-        return ajax.get('/proxyLocal/logout');
+    exports.logout = function logout(options) {
+        // return ajax.get('/proxyLocal/logout');
+        var url = '/uss/logout';
+        return $.ajax({
+            url: url,
+            type: "GET",
+            dataType: 'jsonp',
+            scriptCharset: 'UTF-8',
+            success: options.success,
+            error: options.success
+        });
     };
+
 
     exports.addFavourite = function (queryUrl, params) {
 
