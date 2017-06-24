@@ -19,8 +19,25 @@ define(function (require, exports) {
                 success: function (data) {
                     var response = data;
                     if(response.result === true) {
-                        alert('登录成功！');
-                        window.location.href= window.location.href + 'eq/main';
+                        (function getUserEquips() {
+                            service.getUserEquips({
+                                success: function (data) {
+                                    debugger;
+                                    var data = JSON.parse(data.responseText);
+                                    if(data.status.code === 0) {
+                                        var info;
+                                        sessionStorage.setItem('info', JSON.stringify(data.result));
+                                        alert('登录成功！');
+                                        window.location.href= window.location.href + 'eq/main';
+                                    } else {
+                                        alert(data.status.reason);
+                                    }
+                                },
+                                error: function() {
+                                    alert('网络失败，请重新登录！');
+                                }
+                            });
+                        }());
                     } else {
                         alert('登录失败，请确认用户名或密码！');
                     }

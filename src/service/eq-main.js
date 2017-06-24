@@ -52,15 +52,4 @@ define(function (require, exports) {
             error: options.success
         });
     };
-    exports.getUserEquips = function getUserEquips(options) {
-        var url = '/eq/getUserEquips';
-        return $.ajax({
-            url: url,
-            type: "GET",
-            dataType: 'jsonp',
-            scriptCharset: 'UTF-8',
-            success: options.success,
-            error: options.success
-        });
-    };
 });

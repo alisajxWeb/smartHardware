@@ -4,24 +4,8 @@ define(function (require, exports) {
     var store = require('common/store');
     var service = require('service/eq-main');
     var feedbackMaps = {};
-    
-    (function getUserEquips() {
-        service.getUserEquips({
-            success: function (data) {
-                var data = JSON.parse(data.responseText);
-                if(data.status.code === 0) {
-                    Window.info = data.result;
-                    require('./lab');
-                } else {
-                    alert(data.status.reason);
-                }
-            },
-            error: function() {
-                alert('网络失败，请重新登录！');
-            }
-        });
-    }());
-   // require('./lab');
+ 
+    require('./lab');
     require('./curtains');
     require('./airConditioner');
     require('./tv');
