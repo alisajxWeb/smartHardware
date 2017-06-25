@@ -28,6 +28,7 @@ define(function (require, exports) {
     };
     exports.getUserEquips = function getUserEquips(options) {
         var url = '/eq/getUserEquips';
+        url = fillParams(url, options.params);
         return $.ajax({
             url: url,
             type: "GET",
