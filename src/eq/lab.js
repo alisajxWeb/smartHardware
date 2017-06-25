@@ -12,24 +12,24 @@ define(function (require, exports) {
         "timeoutTime": '',
         "timeoutStatus": '0',
     };
-    var info = '';
+
+    var info = JSON.parse(sessionStorage.getItem('info'));
     var roomArr = [];
     var equipLists = {};
-    var equipList = equipLists['room1'];
+    var equipList;
 
-    var renderRoomSelect = function () {        
-       var count = 0;
-        var info = JSON.parse(sessionStorage.getItem('info'));
-        for(var key in info) {
-            if(key === '灯') {
+    var initialStatus = function () {
+        var count = 0;
+        for (var key in info) {
+            if (key === '灯') {
                 info = info[key];
-                for(var key2 in info){
-                    var tempHash = {title: '',value: '', checked: false};
-                    if(key2 !== ''){
-                        count ++;
+                for (var key2 in info) {
+                    var tempHash = { title: '', value: '', checked: false };
+                    if (key2 !== '') {
+                        count++;
                         tempHash.title = key2;
                         tempHash.value = 'room' + count;
-                        if(count === 1) {
+                        if (count === 1) {
                             tempHash.checked = true;
                         }
                         roomArr.push(tempHash);
@@ -39,24 +39,28 @@ define(function (require, exports) {
         }
         var i = 0;
         var len1 = roomArr.length;
-        for(i; i < len1; i++) {
+        for (i; i < len1; i++) {
             var j = 0;
             var roomNum = roomArr[i].value;
             var roomName = roomArr[i].title;
             equipLists[roomNum] = [];
             var roomN = info[roomName];
             var len2 = roomN.length;
-            for(j; j< len2; j++){
-                var temp = {title: '', value: '', checked: false };
+            for (j; j < len2; j++) {
+                var temp = { title: '', value: '', checked: false };
                 temp.value = roomN[j].id;
                 temp.title = roomN[j].name;
-                if(j === 0){
+                if (j === 0) {
                     temp.checked = true;
+                    params.equipId = roomN[j].id;
                 }
                 equipLists[roomNum].push(temp);
             }
         }
         equipList = equipLists['room1'];
+    };
+
+    var renderRoomSelect = function () {
         new select.init({
             container: $('.labPage').find('.roomBox'),
             selectList: roomArr,
@@ -74,6 +78,7 @@ define(function (require, exports) {
             container: $('.labPage').find('.equipBox'),
             selectList: equipList,
             clickCallback: function (value) {
+                debugger
                 params.equipId = value;
                 getStatus();
             }
@@ -85,10 +90,10 @@ define(function (require, exports) {
             success: function (data) {
                 var response1 = data;
                 if (response1.status.code === 0) {
-                    if (response1.result.status === '1') { 
-                        $('.light').removeClass('light-D').addClass('light-L'); 
-                        params.status = '1'; 
-                    } else if(response1.result.status === '0'){
+                    if (response1.result.status === '1') {
+                        $('.light').removeClass('light-D').addClass('light-L');
+                        params.status = '1';
+                    } else if (response1.result.status === '0') {
                         $('.light').removeClass('light-L').addClass('light-D');
                         params.status = '0';
                     } else {
@@ -98,7 +103,7 @@ define(function (require, exports) {
                     }
                 } else {
                     !isFirst &&
-                    alert(response1.status.reason);
+                        alert(response1.status.reason);
                 }
             }
         });
@@ -132,10 +137,10 @@ define(function (require, exports) {
     };
 
     exports.init = function () {
-        info = Window.info;
         var container = this;
         var tabIndex = 1;
         $('.labPage').find("#lightBox").DateTimePicker();
+        initialStatus();
         getStatus(true);
         renderRoomSelect();
         renderEquipSelect();
@@ -143,7 +148,7 @@ define(function (require, exports) {
     };
 
     $('.labPage').find('.icon-off').on('click', function () {
-        params.status = params.status ==='0' ? '1': '0';
+        params.status = params.status === '0' ? '1' : '0';
         setStatus();
     });
     $('.labPage').find('.radio').on('click', function () {
@@ -152,10 +157,10 @@ define(function (require, exports) {
     });
     $('.labPage').find('.js-button').on('click', function () {
         var timeSet = $.trim($('.labPage').find('.timeSet').val());
-        if(timeSet!=='') {
+        if (timeSet !== '') {
             params.equipId = params.equipId,
-            params.timeoutTime = timeSet,
-            setTimeout();
+                params.timeoutTime = timeSet,
+                setTimeout();
         } else {
             alert('请设置时间')
         }

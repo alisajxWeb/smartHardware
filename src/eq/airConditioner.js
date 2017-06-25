@@ -12,14 +12,13 @@ define(function (require, exports) {
         "timeoutTime": '',
         "timeoutStatus": '0',
     };
-    var info = '';
+    var info = JSON.parse(sessionStorage.getItem('info'));
     var roomArr = [];
     var equipLists = {};
     var equipList = equipLists['room1'];
 
     var renderRoomSelect = function () {
        var count = 0;
-        var info = JSON.parse(sessionStorage.getItem('info'));
         for(var key in info) {
             if(key === '空调') {
                 info = info[key];

@@ -17,7 +17,6 @@ define(function (require, exports) {
     var equipList = equipLists['room1'];
 
     var renderRoomSelect = function () {
-
        var count = 0;
         var info = JSON.parse(sessionStorage.getItem('info'));
         for(var key in info) {
