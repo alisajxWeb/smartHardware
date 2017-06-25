@@ -22,7 +22,6 @@ define(function (require, exports) {
                         (function getUserEquips() {
                             service.getUserEquips({
                                 success: function (data) {
-                                    debugger;
                                     var data = JSON.parse(data.responseText);
                                     if(data.status.code === 0) {
                                         var info;
