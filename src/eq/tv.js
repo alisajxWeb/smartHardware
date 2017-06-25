@@ -11,24 +11,23 @@ define(function (require, exports) {
         "timeoutTime": '',
         "timeoutStatus": '0',
     };
-    var info = '';
+    var info = JSON.parse(sessionStorage.getItem('info'));
     var roomArr = [];
     var equipLists = {};
     var equipList = equipLists['room1'];
 
-    var renderRoomSelect = function () {
-       var count = 0;
-        var info = JSON.parse(sessionStorage.getItem('info'));
-        for(var key in info) {
-            if(key === '电视') {
+    var initialStatus = function () {
+        var count = 0;
+        for (var key in info) {
+            if (key === '电视') {
                 info = info[key];
-                for(var key2 in info){
-                    var tempHash = {title: '',value: '', checked: false};
-                    if(key2 !== ''){
-                        count ++;
+                for (var key2 in info) {
+                    var tempHash = { title: '', value: '', checked: false };
+                    if (key2 !== '') {
+                        count++;
                         tempHash.title = key2;
                         tempHash.value = 'room' + count;
-                        if(count === 1) {
+                        if (count === 1) {
                             tempHash.checked = true;
                         }
                         roomArr.push(tempHash);
@@ -38,24 +37,28 @@ define(function (require, exports) {
         }
         var i = 0;
         var len1 = roomArr.length;
-        for(i; i < len1; i++) {
+        for (i; i < len1; i++) {
             var j = 0;
             var roomNum = roomArr[i].value;
             var roomName = roomArr[i].title;
             equipLists[roomNum] = [];
             var roomN = info[roomName];
             var len2 = roomN.length;
-            for(j; j< len2; j++){
-                var temp = {title: '', value: '', checked: false };
+            for (j; j < len2; j++) {
+                var temp = { title: '', value: '', checked: false };
                 temp.value = roomN[j].id;
                 temp.title = roomN[j].name;
-                if(j === 0){
+                if (j === 0) {
                     temp.checked = true;
+                    params.equipId = roomN[j].id;
                 }
                 equipLists[roomNum].push(temp);
             }
         }
         equipList = equipLists['room1'];
+    };
+
+    var renderRoomSelect = function () {
         new select.init({
             container: $('.tvPage').find('.roomBox'),
             selectList: roomArr,
@@ -120,6 +123,7 @@ define(function (require, exports) {
     exports.init = function () {
         var container = this;
         var tabIndex = 1;
+        initialStatus();
         getStatus(true);
         renderRoomSelect();
         renderEquipSelect();
