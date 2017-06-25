@@ -21,9 +21,8 @@ define(function (require, exports) {
                     if(response.result === true) {
                         (function getUserEquips() {
                             service.getUserEquips({
-                                success: function (data) 
-                                {
-                                    //var data = JSON.parse(data);
+                                success: function (data){
+                                    debugger
                                     if(data.status.code === 0) {
                                         var info;
                                         sessionStorage.setItem('info', JSON.stringify(data.result));

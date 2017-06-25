@@ -7,7 +7,7 @@ define(function (require, exports) {
 
 
     var params = {
-        "equipId": '1',
+        "equipId": '0',
         "status": '0',
         "timeoutTime": '',
         "timeoutStatus": '0',

@@ -7,36 +7,61 @@ define(function (require, exports) {
 
     
     var params = {
-        'equipId': '12',
-        'timeoutTime': '',
-        'timeoutStatus': '0',
+        "equipId": '0',
+        "status": '0',
+        "timeoutTime": '',
+        "timeoutStatus": '0',
     };
-    var room = {
-        "room1": [{
-            title: '空调',
-            value: 12,
-            checked: true
-        }],
-        "room2": [{
-            title: '加湿器',
-            value: 13,
-            checked: true
-        }]
-    };
-    var equipList = room['room1'];
+    var info = '';
+    var roomArr = [];
+    var equipLists = {};
+    var equipList = equipLists['room1'];
+
     var renderRoomSelect = function () {
+       var count = 0;
+        var info = JSON.parse(sessionStorage.getItem('info'));
+        for(var key in info) {
+            if(key === '空调') {
+                info = info[key];
+                for(var key2 in info){
+                    var tempHash = {title: '',value: '', checked: false};
+                    if(key2 !== ''){
+                        count ++;
+                        tempHash.title = key2;
+                        tempHash.value = 'room' + count;
+                        if(count === 1) {
+                            tempHash.checked = true;
+                        }
+                        roomArr.push(tempHash);
+                    }
+                }
+            }
+        }
+        var i = 0;
+        var len1 = roomArr.length;
+        for(i; i < len1; i++) {
+            var j = 0;
+            var roomNum = roomArr[i].value;
+            var roomName = roomArr[i].title;
+            equipLists[roomNum] = [];
+            var roomN = info[roomName];
+            var len2 = roomN.length;
+            for(j; j< len2; j++){
+                var temp = {title: '', value: '', checked: false };
+                temp.value = roomN[j].id;
+                temp.title = roomN[j].name;
+                if(j === 0){
+                    temp.checked = true;
+                }
+                equipLists[roomNum].push(temp);
+            }
+        }
+        equipList = equipLists['room1'];
         new select.init({
             container: $('.airConditionerPage').find('.roomBox'),
-            selectList: [{
-                title: '卧室1',
-                value: 'room1',
-                checked: true
-            }, {
-                title: '客厅',
-                value: 'room2'
-            }],
+            selectList: roomArr,
             clickCallback: function (value) {
-                equipList = room[value];
+                equipList = equipLists[value];
                 $('.airConditionerPage').find('.equipBox').html('');
                 renderEquipSelect();
                 params.equipId = equipList[0].value;
