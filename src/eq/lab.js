@@ -78,7 +78,6 @@ define(function (require, exports) {
             container: $('.labPage').find('.equipBox'),
             selectList: equipList,
             clickCallback: function (value) {
-                debugger
                 params.equipId = value;
                 getStatus();
             }

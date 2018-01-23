@@ -22,7 +22,6 @@ define(function (require, exports) {
                         (function getUserEquips() {
                             service.getUserEquips({
                                 success: function (data){
-                                    debugger
                                     if(data.status.code === 0) {
                                         var info;
                                         sessionStorage.setItem('info', JSON.stringify(data.result));
